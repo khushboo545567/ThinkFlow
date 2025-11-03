@@ -33,4 +33,11 @@ const registerUser = asyncHandler(async (req, res) => {
     .json(new ApiResponse(201, "User registered successfully !", user));
 });
 
-export { registerUser };
+const loginUser = asyncHandler(async (req, res) => {
+  const { userName, email, password } = req.body;
+  const existedUser = await User.findOne({ $or: [{ userName, email }] });
+  if (!existedUser) {
+    throw new ApiError(409, "user does not exsit ! please reigster");
+  }
+});
+export { registerUser, loginUser };
