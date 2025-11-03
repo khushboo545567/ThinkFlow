@@ -1,5 +1,13 @@
 import mongoose from "mongoose";
 
-const followShcema = mongoose.Schema({}, { timestamps: true });
+const catogeryShcema = mongoose.Schema(
+  {
+    catogeryName: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-export const Follow = mongoose.model("Follow", followShcema);
+export const Catogery = mongoose.model("Catogery", catogeryShcema);

@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 
-const followShcema = mongoose.Schema({}, { timestamps: true });
+const roleShcema = mongoose.Schema(
+  {
+    name: { type: String, required: true, unique: true },
+  },
+  { timestamps: true }
+);
 
-export const Follow = mongoose.model("Follow", followShcema);
+export const Role = mongoose.model("Role", roleShcema);

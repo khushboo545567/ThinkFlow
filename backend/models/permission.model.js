@@ -1,5 +1,11 @@
 import mongoose from "mongoose";
 
-const followShcema = mongoose.Schema({}, { timestamps: true });
+const permissionShcema = mongoose.Schema(
+  {
+    resource: { type: String, required: true }, // e.g. 'Post', 'Comment', 'User'
+    action: { type: String, required: true }, // e.g. 'create', 'read', 'update', 'delete'
+  },
+  { timestamps: true }
+);
 
-export const Follow = mongoose.model("Follow", followShcema);
+export const Permission = mongoose.model("Permission", permissionShcema);

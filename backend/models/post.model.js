@@ -9,6 +9,7 @@ const postSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
+    category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
     postImage: [
       {
         type: String, // store URLs or file paths
