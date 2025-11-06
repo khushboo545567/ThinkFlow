@@ -9,9 +9,11 @@ import {
   fogetPasswrod,
   updateUserProfile,
   resendEmail,
+  generateRefreshToken,
 } from "../controllers/auth.controller.js";
 import { verifyEmail } from "../controllers/verifyEmail.controller.js";
 import {
+  changePasswrodValidator,
   forgetPasswordValidator,
   loginUserValidator,
   registerUserValidator,
@@ -59,4 +61,8 @@ router.route("/resend-email").post(resendEmail);
 
 // update user
 router.route("/update-user").post(updateUserProfile);
+
+// refresh token
+router.route("/refresh-token").post(generateRefreshToken);
+
 export default router;

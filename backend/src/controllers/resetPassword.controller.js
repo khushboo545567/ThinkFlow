@@ -1,4 +1,5 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
+import asyncHandler from "../utils/asyncHandler.js";
 
 const resetPassword = asyncHandler(async (req, res) => {
   const { token } = req.query;

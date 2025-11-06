@@ -164,6 +164,7 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 // GET CURRENT USER
 const getCurrentUser = asyncHandler(async (req, res) => {
+  console.log(req.user.id);
   const user = await User.findById(req.user.id);
   return res
     .status(200)
