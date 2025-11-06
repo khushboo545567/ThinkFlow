@@ -164,8 +164,8 @@ const logoutUser = asyncHandler(async (req, res) => {
 
 // GET CURRENT USER
 const getCurrentUser = asyncHandler(async (req, res) => {
-  console.log(req.user.id);
   const user = await User.findById(req.user.id);
+
   return res
     .status(200)
     .json(new ApiResponse(200, user, "user fetched successfully "));
@@ -195,7 +195,7 @@ const fogetPasswrod = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
-    throw new ApiResponse(404, "user does not exist");
+    throw new ApiError(404, "user does not exist");
   }
 
   // /generate token

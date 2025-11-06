@@ -20,6 +20,7 @@ import {
 } from "../validators/auth.validator.js";
 import { validate } from "../middleware/validator.middleware.js";
 import { resetPassword } from "../controllers/resetPassword.controller.js";
+import { verifyJwt } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
@@ -40,27 +41,31 @@ router.route("/login").post(loginUserValidator(), validate, loginUser);
 router.get("/verify-email", verifyEmail);
 
 // logout
-router.route("/logout").post(logoutUser);
+router.route("/logout").post(verifyJwt, logoutUser);
 
 // get current user
-router.route("/get-current-user").get(getCurrentUser);
+router.route("/get-current-user").get(verifyJwt, getCurrentUser);
 
 // change password
 router
   .route("/change-password")
-  .post(changePasswrodValidator(), changePasswrod);
+  .post(changePasswrodValidator(), validate, verifyJwt, changePasswrod);
 
 // forgetPassword
-router.route("/forget-password").post(forgetPasswordValidator(), fogetPasswrod);
+router
+  .route("/forget-password")
+  .post(forgetPasswordValidator(), validate, fogetPasswrod);
 
 // reset password
-router.route("/reset-password").post(loginUserValidator(), resetPassword);
+router
+  .route("/reset-password")
+  .post(loginUserValidator(), validate, resetPassword);
 
 // resend email
 router.route("/resend-email").post(resendEmail);
 
 // update user
-router.route("/update-user").post(updateUserProfile);
+router.route("/update-user").post(verifyJwt, updateUserProfile);
 
 // refresh token
 router.route("/refresh-token").post(generateRefreshToken);
