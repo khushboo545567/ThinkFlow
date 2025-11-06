@@ -207,8 +207,6 @@ const fogetPasswrod = asyncHandler(async (req, res) => {
   user.expiryPasswordToken = tokenExpiry;
 
   await user.save({ validateBeforeSave: false });
-  console.log("forget password hashed token ", hashedToken);
-  console.log("forget password unhashed token ", unHashedToken);
 
   const passwordResetUrl = `http://localhost:3000/api/v1/users/reset-password?token=${unHashedToken}`;
   const userName = user.userName;

@@ -11,8 +11,6 @@ const resetPassword = asyncHandler(async (req, res) => {
   if (!token) throw new ApiError(400, "Token missing");
 
   const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
-  console.log("reset password hashed token ", hashedToken);
-  console.log("reset password unhashed token ", token);
 
   const user = await User.findOne({
     forgetPasswordToken: hashedToken,
