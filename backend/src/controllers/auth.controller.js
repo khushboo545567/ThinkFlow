@@ -193,6 +193,7 @@ const changePasswrod = asyncHandler(async (req, res) => {
 // FORGET PASSWORD
 const fogetPasswrod = asyncHandler(async (req, res) => {
   const { email } = req.body;
+  console.log(email);
   const user = await User.findOne({ email });
   if (!user) {
     throw new ApiError(404, "user does not exist");
@@ -206,6 +207,8 @@ const fogetPasswrod = asyncHandler(async (req, res) => {
   user.expiryPasswordToken = tokenExpiry;
 
   await user.save({ validateBeforeSave: false });
+  console.log("forget password hashed token ", hashedToken);
+  console.log("forget password unhashed token ", unHashedToken);
 
   const passwordResetUrl = `http://localhost:3000/api/v1/users/reset-password?token=${unHashedToken}`;
   const userName = user.userName;
