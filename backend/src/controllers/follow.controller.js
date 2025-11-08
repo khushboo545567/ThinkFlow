@@ -4,13 +4,25 @@ import { ApiError } from "../utils/apiError.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 
 const follow = asyncHandler(async (req, res) => {
-  const userId = req.user.id;
-  const authorId = req.param;
+  const followerId = req.user.id;
+  const followingId = req.params.authorId;
 
-  const following = await Follow.create({});
+  // check if author id is there
+  if (!followingId) {
+    throw new ApiError(400, "author id is requied");
+  }
+
+  if (followerId.toSting() === followingId.toSting()) {
+    throw new ApiError(400, "User cannot follow themselves");
+  }
+
+  const follow = await Follow.create({
+    follower: followerId,
+    following: followingId,
+  });
   return res
-    .status(200)
-    .json(new ApiResponse(200, following, "user followed authro successfully"));
+    .status(201)
+    .json(new ApiResponse(201, follow, "user followed authro successfully"));
 });
 
 export { follow };
