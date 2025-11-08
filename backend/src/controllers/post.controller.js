@@ -4,6 +4,7 @@ import { ApiError } from "../utils/apiError.js";
 import { uploadOnCloudnary } from "../utils/cloudinary.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import sharp from "sharp";
+import fs from "fs";
 
 // user and admin can post article
 const PostAticle = asyncHandler(async (req, res) => {
@@ -17,7 +18,20 @@ const PostAticle = asyncHandler(async (req, res) => {
   // 🖼️ Step 2: Handle multiple images
   if (req.files && req.files.length > 0) {
     const imageUploadPromises = req.files.map(async (file) => {
-      const uploadedImage = await uploadOnCloudnary(file.path);
+      const compressedPath = `uploads/compressed-${file.filename}`;
+
+      // reduce the file to 70% compression
+      await sharp(file.path)
+        .resize({ width: 1000 })
+        .jpeg({ quality: 70 })
+        .toFile(compressedPath);
+
+      const uploadedImage = await uploadOnCloudnary(compressedPath);
+
+      // clean up local files
+      fs.unlinkSync(file.path);
+      fs.unlinkSync(compressedPath);
+
       return uploadedImage;
     });
 
