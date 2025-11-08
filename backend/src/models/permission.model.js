@@ -8,4 +8,6 @@ const permissionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+permissionSchema.index({ resource: 1, action: 1 }, { unique: true });
+
 export const Permission = mongoose.model("Permission", permissionSchema);
