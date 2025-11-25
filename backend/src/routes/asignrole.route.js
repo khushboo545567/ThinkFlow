@@ -1,12 +1,13 @@
 import { Router } from "express";
-import { createRole } from "../controllers/role.controller.js";
+
 import { verifyJwt } from "../middleware/auth.middleware.js";
 import { authorizeRoles } from "../middleware/rbac.middleware.js";
+import { addRoleToUser } from "../controllers/assignRoleToUser.controller.js";
 
 const router = Router();
 
 router
-  .route("/create-role")
-  .post(verifyJwt, authorizeRoles("admin"), createRole);
+  .route("/to-user")
+  .post(verifyJwt, authorizeRoles("admin"), addRoleToUser);
 
 export default router;

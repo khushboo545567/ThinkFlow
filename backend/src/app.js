@@ -6,6 +6,8 @@ import postarticle from "./routes/post.route.js";
 import catogery from "./routes/catogery.route.js";
 import comment from "./routes/comment.route.js";
 import likeRouter from "./routes/like.route.js";
+import assignRole from "./routes/asignrole.route.js";
+import role from "./routes/role.route.js";
 
 const app = express();
 app.use(express.json());
@@ -35,6 +37,12 @@ app.use("/api/v1/comment", comment);
 
 // like
 app.use("/api/v1/like", likeRouter);
+
+// assigning role to the user
+app.use("/api/v1/assignrole", assignRole);
+
+// create role
+app.use("/api/v1/role", role);
 
 // errorHandling
 app.use(errorMiddleware);
