@@ -59,8 +59,7 @@ const getAssignedRole = asyncHandler(async (req, res, next) => {
 // take id from the param
 const removeRoleToUser = asyncHandler(async (req, res, next) => {
   const { userId, roleId } = req.params;
-  console.log(userId);
-  console.log(roleId);
+
   // verify user exists or not
   const user = await User.findOne({ _id: userId });
   if (!user) {
