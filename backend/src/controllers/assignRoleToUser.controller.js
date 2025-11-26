@@ -59,20 +59,21 @@ const getAssignedRole = asyncHandler(async (req, res, next) => {
 // take id from the param
 const removeRoleToUser = asyncHandler(async (req, res, next) => {
   const { userId, roleId } = req.params;
-
+  console.log(userId);
+  console.log(roleId);
   // verify user exists or not
-  const user = await User.findOne({ userId });
+  const user = await User.findOne({ _id: userId });
   if (!user) {
     throw new ApiError(404, "User not found !");
   }
   // verify role exists or not
-  const role = await Role.findOne({ roleId });
+  const role = await Role.findOne({ _id: roleId });
   if (!role) {
     throw new ApiError(404, "role not found !");
   }
 
   // remove role form the user
-  const removeRole = await User.findByIdAndUpadate(
+  const removeRole = await User.findByIdAndUpdate(
     userId,
     { $pull: { role: roleId } },
     { new: true }

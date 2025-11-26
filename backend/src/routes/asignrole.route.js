@@ -19,7 +19,7 @@ router
   .get(verifyJwt, authorizeRoles("admin"), getAssignedRole);
 
 router
-  .route("/remove-roleto-user")
+  .route("/remove-roleto-user/:userId/:roleId")
   .delete(verifyJwt, authorizeRoles("admin"), removeRoleToUser);
 
 export default router;
