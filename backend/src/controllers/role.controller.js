@@ -21,4 +21,13 @@ const createRole = asyncHandler(async (req, res) => {
     );
 });
 
-export { createRole };
+const deleteRole = asyncHandler(async (req, res, next) => {});
+
+const getRoles = asyncHandler(async (req, res, next) => {
+  const roles = await Role.find({});
+  return res
+    .status(200)
+    .json(new ApiResponse(200, roles, "All roles get successfully !"));
+});
+
+export { createRole, getRoles };

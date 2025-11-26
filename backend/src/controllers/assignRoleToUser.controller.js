@@ -72,14 +72,6 @@ const removeRoleToUser = asyncHandler(async (req, res, next) => {
     throw new ApiError(404, "role not found !");
   }
 
-  // remove role form the user
-  const removeRole = await User.findByIdAndUpdate(
-    userId,
-    { $pull: { role: roleId } },
-    { new: true }
-  ).populate("role", "name");
-
-  // check if the role delete or not
   const stillHasRole = removeRole.role.some(
     (r) => r._id.toString() === roleId.toString()
   );
@@ -87,6 +79,13 @@ const removeRoleToUser = asyncHandler(async (req, res, next) => {
   if (stillHasRole) {
     throw new ApiError(500, "failed to remove role !");
   }
+
+  // remove role form the user
+  const removeRole = await User.findByIdAndUpdate(
+    userId,
+    { $pull: { role: roleId } },
+    { new: true }
+  ).populate("role", "name");
 
   return res
     .status(200)
