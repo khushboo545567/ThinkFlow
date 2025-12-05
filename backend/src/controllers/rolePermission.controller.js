@@ -59,6 +59,40 @@ const assignPermissionToRole = asyncHandler(async (req, res) => {
 });
 
 // delete
-const deletePermissionToRole = asyncHandler(async (req, res) => {});
+const deletePermissionToRole = asyncHandler(async (req, res) => {
+  const { roleId, permissionId } = req.params;
+
+  // validate ObjectIds
+  if (
+    !mongoose.Types.ObjectId.isValid(roleId) ||
+    !mongoose.Types.ObjectId.isValid(permissionId)
+  ) {
+    throw new ApiError(400, "invalid roleId or permissionId");
+  }
+
+  const existRolePermissoin = await RolePermission.find({
+    role: roleId,
+    permission: permissionId,
+  });
+
+  if (!existRolePermissoin) {
+    throw new ApiError("the permission for the role does not exists");
+  }
+
+  // find & delete in a single call
+  const deleted = await RolePermission.findOneAndDelete({
+    role: roleId,
+    permission: permissionId,
+  });
+
+  if (!deleted) {
+    // not found
+    throw new ApiError(404, "permission mapping for the role does not exist");
+  }
+
+  return res
+    .status(200)
+    .json(new ApiResponse(200, "permission removed from role successfully"));
+});
 
 export { assignPermissionToRole, deletePermissionToRole };
