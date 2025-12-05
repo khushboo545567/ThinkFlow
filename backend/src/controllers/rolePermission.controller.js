@@ -58,4 +58,7 @@ const assignPermissionToRole = asyncHandler(async (req, res) => {
     );
 });
 
-export { assignPermissionToRole };
+// delete
+const deletePermissionToRole = asyncHandler(async (req, res) => {});
+
+export { assignPermissionToRole, deletePermissionToRole };

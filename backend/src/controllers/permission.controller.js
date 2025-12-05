@@ -35,4 +35,5 @@ const createPermission = asyncHandler(async (req, res) => {
     );
 });
 
-export { createPermission };
+const deltePermission = asyncHandler(async (req, res) => {});
+export { createPermission, deltePermission };

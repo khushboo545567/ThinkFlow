@@ -25,4 +25,10 @@ const createCatogery = asyncHandler(async (req, res) => {
     );
 });
 
-export { createCatogery };
+// get the catogery so that user can see all the catogery
+const getCatogery = asyncHandler(async (req, res) => {});
+
+// delete the catogery
+const deleteCatogery = asyncHandler(async (req, res) => {});
+
+export { createCatogery, getCatogery, deleteCatogery };

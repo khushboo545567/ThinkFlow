@@ -33,4 +33,13 @@ const commentOn = asyncHandler(async (req, res) => {
     );
 });
 
-export { commentOn };
+// edit comment
+const editComment = asyncHandler(async (req, res) => {});
+
+// delete comment
+const deleteComment = asyncHandler(async (req, res) => {});
+
+//  get the comment for the specific user
+const getComment = asyncHandler(async (req, res) => {});
+
+export { commentOn, editComment, deleteComment, getComment };
