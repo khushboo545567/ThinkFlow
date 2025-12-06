@@ -74,7 +74,32 @@ const PostAticle = asyncHandler(async (req, res) => {
 });
 
 // adimn , editor, own user can edit the post
-const editArticle = asyncHandler(async (req, res) => {});
+const editArticle = asyncHandler(async (req, res) => {
+  const { postId } = req.params;
+  const { title, description, imageIndex, oldImageUrl } = req.body;
+  const newFile = req.file;
+  const updateOps = {};
+  if (title !== undefined) {
+    updateOps.title = title;
+  }
+  if (description !== undefined) {
+    updateOps.description = description;
+  }
+
+  if (!newFile) {
+    const posted = await Post.findByIdAndUpdate(postId, updateOps, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!posted) {
+      return res.status(404).json(new ApiError(404, "post not found"));
+    }
+    return res
+      .status(200)
+      .json(new ApiResponse(200, posted, "post updated successfully"));
+  }
+});
 
 // get post on the following of the user (first find the users follower and then find these authros in teh post createdby and return )
 const getPostForFeed = asyncHandler(async (req, res) => {});
@@ -98,4 +123,4 @@ const deletePost = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, "post deleted successfully !"));
 });
 
-export { PostAticle, deletePost };
+export { PostAticle, deletePost, editArticle };
