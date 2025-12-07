@@ -131,6 +131,7 @@ const getPostForFeed = asyncHandler(async (req, res) => {
 
   return res.status(200).json({ posts });
 });
+// FETCH THE COMMENT FOR EACH POST
 
 // admin can fetch the post by giving the user id to see the users post take the uid from the body and
 export const getPostForAdmin = asyncHandler(async (req, res) => {
