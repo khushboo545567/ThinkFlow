@@ -104,24 +104,35 @@ const editArticle = asyncHandler(async (req, res) => {
 });
 
 // get post on the following of the user (first find the users follower and then find these authros in teh post createdby and return )
+
 const getPostForFeed = asyncHandler(async (req, res) => {
-  const { userId } = req.user.id;
+  const userId = req.user.id;
+  const page = Number(req.query.page || 1);
   const limit = 20;
   const skip = (page - 1) * limit;
 
-  const follow = await Follow.find({ follower: userId }).select(
+  const followDocs = await Follow.find({ follower: userId }).select(
     "following -_id"
   );
-  const followingId = follow.map((f) => {
-    f.following;
-  });
 
-  if (!followingId.length) {
-    return res.status(200).json({ posts: [] });
+  // map properly to array of ids
+  const followingIds = followDocs
+    .map((f) => (f.following ? f.following.toString() : null))
+    .filter(Boolean);
+
+  if (!followingIds.length) {
+    return res.status(200).json({
+      success: true,
+      data: { posts: [], page, limit, total: 0, totalPages: 0 },
+    });
   }
 
+  // show only posts from last N days (default 7)
+  const days = Number.parseInt(req.query.days ?? "7", 10);
+  const cutoff = new Date(Date.now() - Math.max(0, days) * 24 * 60 * 60 * 1000);
+
   const posts = await Post.find({
-    postedBy: { $in: followingId },
+    postedBy: { $in: followingIds }, // <-- fixed variable name
     createdAt: { $gte: cutoff },
   })
     .populate("postedBy", "userName avatar")
@@ -129,8 +140,11 @@ const getPostForFeed = asyncHandler(async (req, res) => {
     .skip(skip)
     .limit(limit); // limit or paginate as needed
 
-  return res.status(200).json({ posts });
+  return res
+    .status(200)
+    .json(new ApiResponse(200, posts, "post are fetched successfully !"));
 });
+
 // FETCH THE COMMENT FOR EACH POST
 
 // admin can fetch the post by giving the user id to see the users post take the uid from the body and
@@ -189,16 +203,24 @@ const getPostForUser = asyncHandler(async (req, res) => {
 // get post when applying filter on the catogeries
 const getPostByFilter = asyncHandler(async (req, res) => {
   const { filterName } = req.params;
-  const catId = await Catogery.findOne({ categoryName: filterName }).select(
+  console.log(filterName);
+  const catIdDoc = await Catogery.findOne({ catogeryName: filterName }).select(
     "_id"
   );
+  if (!catIdDoc) {
+    return res
+      .status(404)
+      .json(new ApiResponse(404, null, "Category not found"));
+  }
 
-  const posts = await Post.find({ category: catId })
+  const posts = await Post.find({ category: catIdDoc._id })
     .populate("category", "categoryName")
     .select("title description postImage likesCount commentsCount createdAt")
     .sort({ createdAt: -1 });
 
-  return res.status(200).json(200, posts, "posts get successfully");
+  return res
+    .status(200)
+    .json(new ApiResponse(200, posts, "posts get successfully"));
 });
 
 // admin and author can delte the post , get the post id form the params , and uid from the token

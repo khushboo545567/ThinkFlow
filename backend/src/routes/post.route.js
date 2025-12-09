@@ -22,7 +22,7 @@ router
   .route("/edit-article/:postId")
   .put(verifyJwt, authorizeRoles("admin", "editor"), editArticle);
 
-router.route("/get-post-for-feed/:userId").get(verifyJwt, getPostForFeed);
+router.route("/get-post-for-feed").get(verifyJwt, getPostForFeed);
 
 router
   .route("/get-post-for-admin")
