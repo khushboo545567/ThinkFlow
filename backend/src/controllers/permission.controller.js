@@ -38,14 +38,17 @@ const createPermission = asyncHandler(async (req, res) => {
 // delete permission
 const deletePermission = asyncHandler(async (req, res) => {
   const { permissionId } = req.params;
-  const existsPermisson = await Permission.findById(permissionId);
+  console.log(permissionId);
+
+  const existsPermisson = await Permission.find({ _id: permissionId });
+
   if (!existsPermisson) {
     throw new ApiError(404, "permission not found");
   }
   await Permission.findByIdAndDelete(permissionId);
   return res
-    .status(204)
-    .json(new ApiResponse(204, "permission deleted successfully"));
+    .status(200)
+    .json(new ApiResponse(200, "permission deleted successfully"));
 });
 
 export { createPermission, deletePermission };
