@@ -10,6 +10,7 @@ import assignRole from "./routes/asignrole.route.js";
 import role from "./routes/role.route.js";
 import permission from "./routes/permission.route.js";
 import rolePermission from "./routes/rolePermission.route.js";
+import follow from "./routes/follow.route.js";
 
 const app = express();
 app.use(express.json());
@@ -52,7 +53,8 @@ app.use("/api/v1/pemission", permission);
 // assign permission to the role
 app.use("/api/v1/rolePermission", rolePermission);
 
-//
+//follow the authors
+app.use("/api/v1/follow", follow);
 
 // errorHandling
 app.use(errorMiddleware);

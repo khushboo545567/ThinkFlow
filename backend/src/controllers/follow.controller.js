@@ -9,20 +9,22 @@ const follow = asyncHandler(async (req, res) => {
 
   // check if author id is there
   if (!followingId) {
-    throw new ApiError(400, "author id is requied");
+    throw new ApiError(400, "author id is required");
   }
 
-  if (followerId.toSting() === followingId.toSting()) {
+  // user cannot follow themselves
+  if (String(followerId) === String(followingId)) {
     throw new ApiError(400, "User cannot follow themselves");
   }
 
-  const follow = await Follow.create({
+  const followDoc = await Follow.create({
     follower: followerId,
     following: followingId,
   });
+
   return res
     .status(201)
-    .json(new ApiResponse(201, follow, "user followed authro successfully"));
+    .json(new ApiResponse(201, followDoc, "User followed author successfully"));
 });
 
 export { follow };
