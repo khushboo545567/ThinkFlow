@@ -9,12 +9,14 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import "./index.css";
 
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import RegisgerPage from "./pages/RegisterPage.jsx";
 import AuthLayout from "./layout/authLayout.jsx";
 import MainLayout from "./layout/mainLayout.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,6 +38,8 @@ const router = createBrowserRouter(
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* <App /> */}
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>
 );
