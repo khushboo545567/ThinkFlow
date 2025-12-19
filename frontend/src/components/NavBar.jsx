@@ -12,7 +12,6 @@ const Navbar = () => {
        dark:bg-gray-900 
       text-white flex items-center justify-between px-4 z-50 border-b border-gray-200 dark:border-gray-900"
     >
-      {/* Left */}
       <div className="flex items-center gap-4">
         <i className="ri-menu-line text-2xl text-black dark:text-white cursor-pointer"></i>
         {themeMode === "light" ? (
