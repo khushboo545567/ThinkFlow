@@ -11,13 +11,21 @@ const Sidebar = () => {
     text-white p-4 pt-16
     border-r border-gray-200 dark:border-gray-900"
     >
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-1">
         <Link
           to="/"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm"
         >
           <i class="ri-home-2-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white">Home</span>
+        </Link>
+        <Link
+          to="/"
+          className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm"
+        >
+          <i class="ri-article-line text-black dark:text-white cursor-pointer"></i>
+
+          <span className="text-black dark:text-white">Feed</span>
         </Link>
         <Link
           to="/profile"

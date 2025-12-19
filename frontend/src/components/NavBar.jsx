@@ -28,7 +28,7 @@ const Navbar = () => {
           </Link>
         )}
 
-        <div className="flex items-center bg-gray-100 text-black rounded-md px-3 py-1">
+        <div className="flex items-center bg-gray-100 text-black rounded-sm px-3 py-1">
           <i className="ri-search-line  text-black  cursor-pointer"></i>
           <input
             type="text"
@@ -52,14 +52,11 @@ const Navbar = () => {
           )}
         </button>
 
-        <button className="bg-[#F9F9F9] text-black px-3 py-1 text-lg rounded-md hover:bg-gray-200">
+        <button className="bg-[#F9F9F9] text-black px-3 py-1 text-lg rounded-sm hover:bg-gray-200">
           <Link to="/login">Login</Link>
         </button>
-        <button className="bg-[#F9F9F9] text-black px-3 py-1 text-lg rounded-md hover:bg-gray-200">
+        <button className="bg-[#F9F9F9] text-black px-3 py-1 text-lg rounded-sm hover:bg-gray-200">
           <Link to="/register">Signup</Link>
-        </button>
-        <button className="bg-[#000000] px-3 py-1 text-lg rounded-md  text-white ">
-          <Link to="/post">Post</Link>
         </button>
       </div>
     </nav>
