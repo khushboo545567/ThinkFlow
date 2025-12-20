@@ -26,13 +26,30 @@ const registerUserValidator = () => {
   ];
 };
 
+// const loginUserValidator = () => {
+//   return [
+//     body("password")
+//       .notEmpty()
+//       .withMessage("password is required")
+//       .isLength({ min: 6 })
+//       .withMessage("passowrd should be of min 6 char"),
+//   ];
+// };
+
 const loginUserValidator = () => {
   return [
     body("password")
       .notEmpty()
       .withMessage("password is required")
       .isLength({ min: 6 })
-      .withMessage("passowrd should be of min 6 char"),
+      .withMessage("password should be at least 6 characters"),
+
+    body().custom((value) => {
+      if (!value.userName && !value.email) {
+        throw new Error("Either username or email is required");
+      }
+      return true;
+    }),
   ];
 };
 
