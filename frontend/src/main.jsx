@@ -9,6 +9,8 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import HomePage from "./pages/HomePage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -40,6 +42,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* <App /> */}
     <ThemeProvider>
+      <ToastContainer position="top-right" autoClose={2000} />
       <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>

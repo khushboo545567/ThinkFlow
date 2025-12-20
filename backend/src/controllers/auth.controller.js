@@ -83,15 +83,22 @@ const registerUser = asyncHandler(async (req, res) => {
     subject: "Verify your email address",
     mailgenContent,
   });
-
+  const userdata = {
+    userName: user.userName,
+    email: user.email,
+    bio: user.bio,
+    createdAt: user.createdAt,
+    avatar: user.avatar,
+    role: user.role,
+  };
   // Send success response
   return res
     .status(201)
     .json(
       new ApiResponse(
         201,
-        "User registered successfully! Verification email sent.",
-        user
+        userdata,
+        "User registered successfully! Verification email sent."
       )
     );
 });

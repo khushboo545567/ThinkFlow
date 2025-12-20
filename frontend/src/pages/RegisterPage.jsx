@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import React, { useState } from "react";
 const RegisgerPage = function () {
   const [formData, setFormData] = useState({
@@ -22,9 +23,14 @@ const RegisgerPage = function () {
           withCredentials: true,
         }
       );
-      console.log(response);
+      if (response.data.success) {
+        toast.success(response.data.message || "User registered successfully");
+      }
+
+      console.log(response.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error:", error.response?.data?.message || error.message);
+      toast.error(error.response?.data?.message || "Something went wrong");
     }
   };
   return (
