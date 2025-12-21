@@ -28,7 +28,7 @@ const Sidebar = () => {
           <span className="text-black dark:text-white">Feed</span>
         </Link>
         <Link
-          to="/"
+          to="/postblog"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
           <i class="ri-edit-line text-black dark:text-white cursor-pointer"></i>

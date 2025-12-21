@@ -24,6 +24,7 @@ import FeedPage from "./pages/FeedPage.jsx";
 import SavedItems from "./pages/SavedItemsPage.jsx";
 import StatusPage from "./pages/StatusPage.jsx";
 import BlogDetails from "./pages/BlogDetails.jsx";
+import PostBlog from "./pages/PostBlog.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         <Route path="/save" element={<SavedItems />} />
         <Route path="/status" element={<StatusPage />} />
         <Route path="/blogdetails" element={<BlogDetails />} />
+        <Route path="/postblog" element={<PostBlog />} />
       </Route>
       {/* auth routes */}
       <Route element={<AuthLayout />}>
