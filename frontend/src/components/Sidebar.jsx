@@ -20,7 +20,7 @@ const Sidebar = () => {
           <span className="text-black dark:text-white">Home</span>
         </Link>
         <Link
-          to="/"
+          to="/feed"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
           <i class="ri-article-line text-black dark:text-white cursor-pointer"></i>
@@ -50,7 +50,7 @@ const Sidebar = () => {
           <span className="text-black dark:text-white">Status</span>
         </Link>
         <Link
-          to="#"
+          to="/save"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
           <i class="ri-book-marked-fill text-black dark:text-white cursor-pointer"></i>

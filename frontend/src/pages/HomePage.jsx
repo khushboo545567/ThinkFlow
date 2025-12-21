@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <div className="bg-white dark:bg-gray-800 text-black dark:text-white w-full h-full">
+    <div className="bg-white dark:bg-gray-900 text-black dark:text-white w-full h-full">
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center py-20 px-4">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -39,7 +39,7 @@ const HomePage = () => {
           {[1, 2, 3].map((item) => (
             <div
               key={item}
-              className="bg-gray-100 dark:bg-gray-700 p-5 rounded-sm shadow hover:shadow-md border border-gray-300 transition"
+              className="bg-gray-100 dark:bg-gray-900 p-5 rounded-sm shadow hover:shadow-md border border-gray-700  transition"
             >
               <h3 className="text-xl font-semibold mb-2">Blog Title {item}</h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">

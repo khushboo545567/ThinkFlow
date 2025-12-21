@@ -6,7 +6,7 @@ const FeedPage = () => {
   return (
     <div className="w-full min-h-screen bg-white dark:bg-gray-900 p-6">
       {/* Categories */}
-      <div className="relative w-60 mb-6">
+      <div className="relative w-60 mb-6 pl-8">
         <button
           onClick={() => setOpen(!open)}
           className="w-full flex items-center justify-between 
@@ -38,7 +38,7 @@ const FeedPage = () => {
       </div>
 
       {/* Feed */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 px-5">
         <Card />
         <Card />
         <Card />
