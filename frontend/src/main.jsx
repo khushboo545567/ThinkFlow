@@ -25,6 +25,8 @@ import SavedItems from "./pages/SavedItemsPage.jsx";
 import StatusPage from "./pages/StatusPage.jsx";
 import BlogDetails from "./pages/BlogDetails.jsx";
 import PostBlog from "./pages/PostBlog.jsx";
+import DashBoard from "./pages/admin/DashBoard.jsx";
+import AdminLayout from "./layout/AdminLayout.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -44,6 +46,10 @@ const router = createBrowserRouter(
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<LoginPage />} />{" "}
         <Route path="/register" element={<RegisgerPage />} />
+      </Route>
+      {/* admin routes */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/dashboard" element={<DashBoard />}></Route>
       </Route>
     </>
   )
