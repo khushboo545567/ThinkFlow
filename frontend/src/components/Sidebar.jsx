@@ -16,14 +16,14 @@ const Sidebar = () => {
           to="/"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-home-2-fill text-black dark:text-white cursor-pointer "></i>
+          <i className="ri-home-2-fill text-black dark:text-white cursor-pointer "></i>
           <span className="text-black dark:text-white">Home</span>
         </Link>
         <Link
           to="/feed"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-article-line text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-article-line text-black dark:text-white cursor-pointer"></i>
 
           <span className="text-black dark:text-white">Feed</span>
         </Link>
@@ -31,7 +31,7 @@ const Sidebar = () => {
           to="/postblog"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-edit-line text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-edit-line text-black dark:text-white cursor-pointer"></i>
 
           <span className="text-black dark:text-white">Post Blogs</span>
         </Link>
@@ -39,28 +39,28 @@ const Sidebar = () => {
           to="/profile"
           className="flex gap-3 text-lg hover:bg-gray-100  p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-account-circle-fill text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-account-circle-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white">Profile</span>
         </Link>
         <Link
           to="/status"
           className="flex gap-3 text-lg hover:bg-gray-100  p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-bar-chart-fill text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-bar-chart-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white">Status</span>
         </Link>
         <Link
           to="/save"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-book-marked-fill text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-book-marked-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white"> Library</span>
         </Link>
         <Link
           to="#"
           className="flex gap-3 text-lg hover:bg-gray-100  p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-group-fill text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-group-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white">Following+</span>
         </Link>
       </div>

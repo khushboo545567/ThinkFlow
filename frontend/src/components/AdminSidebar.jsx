@@ -5,25 +5,26 @@ const Sidebar = () => {
   return (
     <div
       className="
-        fixed top-16 left-0
-    w-64 h-full
-    bg-[#FFFFFF] dark:bg-gray-900
-    text-white p-4 pt-16
-    border-r border-gray-200 dark:border-gray-700"
+        fixed left-0 top-0
+        w-64 h-screen
+        bg-white dark:bg-gray-900
+        p-4 pt-16
+        border-r border-gray-200 dark:border-gray-700
+      "
     >
       <div className="flex flex-col gap-1">
         <Link
-          to="/dashboard"
+          to="/admin/dashboard"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-home-2-fill text-black dark:text-white cursor-pointer "></i>
+          <i className="ri-home-2-fill text-black dark:text-white cursor-pointer "></i>
           <span className="text-black dark:text-white">Dashboard</span>
         </Link>
         <Link
           to="/feed"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-article-line text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-article-line text-black dark:text-white cursor-pointer"></i>
 
           <span className="text-black dark:text-white"> Manage Post</span>
         </Link>
@@ -31,7 +32,7 @@ const Sidebar = () => {
           to="/postblog"
           className="flex gap-3 text-lg hover:bg-gray-100 p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-edit-line text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-edit-line text-black dark:text-white cursor-pointer"></i>
 
           <span className="text-black dark:text-white">
             Post Manage Comments
@@ -41,7 +42,7 @@ const Sidebar = () => {
           to="/profile"
           className="flex gap-3 text-lg hover:bg-gray-100  p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-account-circle-fill text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-account-circle-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white">
             Assign Permission To Role
           </span>
@@ -50,7 +51,7 @@ const Sidebar = () => {
           to="/status"
           className="flex gap-3 text-lg hover:bg-gray-100  p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-bar-chart-fill text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-bar-chart-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white">
             Assign role to user
           </span>
@@ -59,7 +60,7 @@ const Sidebar = () => {
           to="/status"
           className="flex gap-3 text-lg hover:bg-gray-100  p-2 rounded-sm hover:dark:bg-gray-700"
         >
-          <i class="ri-bar-chart-fill text-black dark:text-white cursor-pointer"></i>
+          <i className="ri-bar-chart-fill text-black dark:text-white cursor-pointer"></i>
           <span className="text-black dark:text-white">Manage Roles</span>
         </Link>
       </div>

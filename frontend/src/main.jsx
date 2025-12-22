@@ -34,7 +34,7 @@ const router = createBrowserRouter(
       {/* main routes */}
       <Route path="/" element={<MainLayout />}>
         <Route path="" element={<HomePage />} />
-        <Route path="error" element={<ErrorPage />} />
+        <Route path="/error" element={<ErrorPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/feed" element={<FeedPage />} />
         <Route path="/save" element={<SavedItems />} />
@@ -49,7 +49,7 @@ const router = createBrowserRouter(
       </Route>
       {/* admin routes */}
       <Route path="/admin" element={<AdminLayout />}>
-        <Route path="/dashboard" element={<DashBoard />}></Route>
+        <Route path="/admin/dashboard" element={<DashBoard />}></Route>
       </Route>
     </>
   )
