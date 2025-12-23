@@ -42,7 +42,7 @@ const Sidebar = () => {
 
         {/* Manage Permissions */}
         <Link
-          to="/admin/assignpermission"
+          to="/admin/permission"
           className="flex items-center gap-3 text-lg p-2 rounded-sm hover:bg-gray-100 hover:dark:bg-gray-700"
         >
           <i className="ri-lock-2-fill text-black dark:text-white"></i>
@@ -51,7 +51,7 @@ const Sidebar = () => {
 
         {/* Assign Permission to Role */}
         <Link
-          to="/admin/assign-permissions"
+          to="/admin/assignpermission"
           className="flex items-center gap-3 text-lg p-2 rounded-sm hover:bg-gray-100 hover:dark:bg-gray-700"
         >
           <i className="ri-key-fill text-black dark:text-white"></i>
