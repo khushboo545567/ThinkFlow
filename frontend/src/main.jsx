@@ -31,6 +31,7 @@ import ManageRolePage from "./pages/admin/ManageRolePage.jsx";
 import ManageAssignRoleUser from "./pages/admin/ManageUserPage.jsx";
 import AssignPermission from "./pages/admin/AssignPermissionToRole.jsx";
 import Permission from "./pages/admin/ManagePermission.jsx";
+import ManageComment from "./pages/admin/ManageComment.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,6 +61,7 @@ const router = createBrowserRouter(
         <Route path="/admin/manageuser" element={<ManageAssignRoleUser />} />
         <Route path="/admin/permission" element={<Permission />} />
         <Route path="/admin/assignpermission" element={<AssignPermission />} />
+        <Route path="/admin/managecomment" element={<ManageComment />} />
       </Route>
     </>
   )

@@ -60,7 +60,7 @@ const Sidebar = () => {
 
         {/* Manage Comments */}
         <Link
-          to="/admin/comments"
+          to="/admin/managecomment"
           className="flex items-center gap-3 text-lg p-2 rounded-sm hover:bg-gray-100 hover:dark:bg-gray-700"
         >
           <i className="ri-chat-delete-fill text-black dark:text-white"></i>

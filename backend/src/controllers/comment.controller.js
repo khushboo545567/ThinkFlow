@@ -79,6 +79,7 @@ const getComment = asyncHandler(async (req, res) => {
   // find the comment based on post id
   const comments = await Comment.find({ commentOnPost: postId })
     .populate("commentedBy", "name")
+    .populate("commentOnPost", "title")
     .sort({ createdAt: -1 });
 
   return res
