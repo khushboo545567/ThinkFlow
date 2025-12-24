@@ -1,6 +1,16 @@
 import React from "react";
 
 const AssignPermissionCard = () => {
+  const user = {
+    username: "Khushboo",
+    role: "Admin",
+    permissions: [
+      { _id: "1", action: "create", resource: "post" },
+      { _id: "2", action: "edit", resource: "post" },
+      { _id: "3", action: "delete", resource: "comment" },
+    ],
+  };
+
   return (
     <div className="w-full  p-4 border-b border-gray-300  bg-white flex flex-col gap-3">
       {/* Header */}
