@@ -10,6 +10,12 @@ ThinkFlow enables users to create, manage, and engage with posts in a structured
 
 ---
 
+## Live Demo
+Live URL: [Not deployed yet.]
+GitHub Repository: https://github.com/khushboo545567/Civic-Track
+
+---
+
 ## Features
 
 ### User Features
@@ -69,12 +75,12 @@ ThinkFlow enables users to create, manage, and engage with posts in a structured
 - MongoDB
 - Git
 
-### Backend Setup
+### Setup
 ```bash
 cd backend
 npm install
 npm start
-Frontend Setup
+
 cd frontend
 npm install
 npm run dev
